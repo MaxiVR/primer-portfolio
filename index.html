@@ -17,15 +17,12 @@
     <div class="container-fluid" id="contendor-perfil">
         <div class="row">
             <div class="col-6">
-
                 <img id="foto-perfil" class="img-fluid"
                     src="https://img.freepik.com/vector-gratis/dibujos-animados-cara-hombre-joven_18591-59097.jpg?size=338&ext=jpg">
                 <!-- Button trigger modal -->
                 <button type="button" id="btn-perfil" class="btn btn-open" data-bs-toggle="modal"
                     data-bs-target="#Modal-perfil">
-                    <a href="#" class="btn-right">
-                        <i class="fa fa-pencil" style="font-size:24px;margin-bottom: 1px;"></i>
-                    </a>
+                    <i class="fa fa-pencil" style="margin-bottom: 1px;"></i>
                 </button>
 
                 <!-- Modal -->
@@ -53,7 +50,7 @@
                 </div>
                 <div id="info">
                     <h2 id="nomApellido" style="margin-bottom: 0px;">Maximiliano Vazquez</h2>
-                    <spam id="lugar">La Plata, Buenos Aires (Argentina)</spam>
+                    <spam id="lugar-perfil">La Plata, Buenos Aires (Argentina)</spam>
                 </div>
             </div>
             <div class="col-6">
@@ -68,7 +65,12 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-11">
+            <div class="col-12">
+                <!-- Button trigger modal -->
+                <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#Modal"
+                    style="float: right;">
+                    <i class="fa fa-pencil"></i>
+                </button>
                 <div>
                     <h2 style="width: 50%">Acerca de mi</h2>
                     <p id="textAcercaDe">
@@ -81,15 +83,6 @@
                     </p>
 
                 </div>
-            </div>
-
-            <div class="col-1">
-                <!-- Button trigger modal -->
-                <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#Modal">
-                    <a href="#" class="btn-right">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                </button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -101,7 +94,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <input type="text" placeholder="Informacion personal" id="prueba" size="50"></input>
+                                <input type="text" placeholder="Informacion personal" id="info-personal" size="50"></input>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -120,32 +113,31 @@
         <div class="row" id="EduExp">
             <div class="col-12" id="contenedor-edu">
                 <div id="contenedor-plus">
-                    <a href="#" class="btn-right" id="btn-plus" style="float: right;" onclick="agregarNuevosCampos()">
+                    <button type="button" class="btn-right" style="float: right;" onclick="agregarCamposEdu()">
                         <i class="fa fa-plus btn"></i>
-                    </a>
+                    </button>
                 </div>
-                <div id="contenedor-titulo">
+                <div id="contenedor-titulo-edu">
                     <h2>Educacion</h2>
                 </div>
-                <div id="card-1">
-                    <div class="titulos-edu">
-                        <h5>Lugar-----</h5>
-                        <h6>Fecha </h6>
+                <div class="card" id="original-edu">
+                    <div class="titulos">
+                        <h5 id="lugar-edu">Lugar-----</h5>
+                        <h6 id="fecha-edu">Fecha </h6>
                     </div>
                     <div class="contenedor-edit">
                         <ul class="menu-edit">
                             <li class="btn-edit">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-open" data-bs-toggle="modal"
-                                    data-bs-target="#Edu-exp">
-                                    <a href="#" class="btn-right">
-                                        <i class="fa fa-pencil btn"></i>
-                                    </a>
+                                    data-bs-target="#modal-edu">
+                                    <i class="fa fa-pencil" onclick="cambiar(this)"></i>
                                 </button>
                             </li>
                             <li class="btn-edit">
-                                <a href="#" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
-                                    <i class="fa fa-trash-o btn" aria-hidden="true"> </i></a>
+                                <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
+                                    <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -162,56 +154,73 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <input type="text" placeholder="Institución" id="" size="50"></input>
-                            <input type="text" placeholder="Periodo" id="" size="50"></input>
+                            <input type="text" placeholder="Institución" id="institucion" size="50"></input>
+                            <input type="text" placeholder="Periodo" id="periodo" size="50"></input>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-primary" onclick="editarEdu()">Guardar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+<!---Trabajo--->
     <div class="container-fluid">
         <div class="row" id="EduExp">
             <div class="col-12">
-                <!-- Button trigger modal -->
-                <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal" data-bs-target="#exp">
-                    <a href="#" class="btn-right">
-                        <i class="fa fa-pencil" "></i>
-                    </a>
-                </button>
-
+                <div id="contenedor-plus">
+                    <button type="button" class="btn-right" style="float: right;" onclick="agregarCamposTrabajo()">
+                        <i class="fa fa-plus btn"></i>
+                    </button>
+                </div>
+                <div id="contenedor-titulo-trabajo">
+                    <h2>Experiencia Laboral</h2>
+                </div>
+                <div class="card" id="original-trabajo">
+                    <div class="titulos">
+                        <h5>Empresa</h5>
+                        <h4>Puesto</h4>
+                        <h6>Periodo</h6>
+                    </div>
+                    <div class="contenedor-edit">
+                        <ul class="menu-edit">
+                            <li class="btn-edit">
+                                <button type="button" id="btn-info" class="btn btn-open" data-bs-toggle="modal"
+                                    data-bs-target="#exp">
+                                    <i class="fa fa-pencil btn" onclick="cambiar(this)"></i>
+                                </button>
+                            </li>
+                            <li class="btn-edit">
+                                <button type="button" class="btn-right" id="btn-thash" onclick="eliminarInfo(this)">
+                                    <i class="fa fa-trash-o btn" aria-hidden="true"> </i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <!-- Modal -->
                 <div class=" modal fade" id="exp" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="ModalLabel">Educacion</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="text" placeholder="Empresa" id="" size="50"></input>
-                                        <input type="text" placeholder="Puesto" id="" size="50"></input>
-                                        <input type="text" placeholder="Periodo" id="" size="50"></input>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
-                                    </div>
-                                </div>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">Experiencia Laboral</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-            </div>
-            <h2>Experiencia Laboral</h2>
-            <div id="card-2">
-                <h5>Empresa</h5>
-                <h5>Lugar-----</h5>
-                <h6>Fecha</h6>
+                            <div class="modal-body">
+                                <input type="text" placeholder="Empresa" id="empresa" size="50"></input>
+                                <input type="text" placeholder="Puesto" id="puesto" size="50"></input>
+                                <input type="text" placeholder="Periodo" id="periodoTrabajado" size="50"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="editarTrabajo()">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -219,6 +228,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 
 </html>
