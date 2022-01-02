@@ -18,7 +18,7 @@ body{
     margin-bottom: 5px;
 }
 
-#contendor-perfil{
+#card-perfil{
     background-image: linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);
     
 }
@@ -36,9 +36,9 @@ body{
     position: absolute;
 }
 
-img{
+#foto-perfil{
     width:180px;
-    height: 190px;
+    max-height: 190px;
     border-radius: 50% 50%;
     margin-top: 80px;
     margin-left: 50px;
@@ -124,6 +124,7 @@ img{
 
 .titulos{
     float: left;
+    width: 95%;
 }
 
 .contenedor-edit{
@@ -150,3 +151,30 @@ img{
     background-color: transparent;
     border: none;
 }
+
+.cont{
+    text-align: center;
+    display: flex;
+}
+
+
+.lang{
+    height: 50px;
+}
+
+.cont-icon-lang{
+    margin-right: 10px;
+}
+
+@media (min-width: 460px) {
+    .lang{
+        height: 80px;
+    }
+}
+
+@media (min-width: 560px) {
+    .lang{
+        height: 100px;
+    }
+}
+
